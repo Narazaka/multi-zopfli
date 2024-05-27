@@ -1,4 +1,4 @@
-# to-zopfli
+# multi-zopfli
 
 To install dependencies:
 

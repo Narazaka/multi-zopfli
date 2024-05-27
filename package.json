@@ -1,11 +1,11 @@
 {
-  "name": "to-zopfli",
+  "name": "multi-zopfli",
   "module": "index.ts",
   "type": "module",
   "scripts": {
     "build": "bun run build:bun && bun run build:cp",
-    "build:bun": "bun build ./index.ts --compile --outfile to-zopfli --external zopflipng-bin",
-    "build:cp": "mkdir -p dist/node_modules && shx mv to-zopfli.exe dist && shx cp -R node_modules/zopflipng-bin node_modules/bin-build node_modules/bin-wrapper node_modules/import-lazy node_modules/pify dist/node_modules",
+    "build:bun": "bun build ./index.ts --compile --outfile multi-zopfli --external zopflipng-bin",
+    "build:cp": "mkdir -p dist/node_modules && shx mv multi-zopfli.exe dist && shx cp -R node_modules/zopflipng-bin node_modules/bin-build node_modules/bin-wrapper node_modules/import-lazy node_modules/pify dist/node_modules",
     "clean": "shx rm -rf dist"
   },
   "devDependencies": {
