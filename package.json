@@ -1,0 +1,29 @@
+{
+  "name": "to-zopfli",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun run build:bun && bun run build:cp",
+    "build:bun": "bun build ./index.ts --compile --outfile to-zopfli --external zopflipng-bin",
+    "build:cp": "mkdir -p dist/node_modules && shx mv to-zopfli.exe dist && shx cp -R node_modules/zopflipng-bin node_modules/bin-build node_modules/bin-wrapper node_modules/import-lazy node_modules/pify dist/node_modules",
+    "clean": "shx rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/zopflipng-bin": "^4.1.2",
+    "shx": "^0.3.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/file-size": "^1.0.3",
+    "cmd-ts": "^0.13.0",
+    "fast-glob": "^3.3.2",
+    "file-size": "^1.0.0",
+    "globby": "^14.0.1",
+    "p-queue": "^8.0.1",
+    "slash": "^5.1.0",
+    "zopflipng-bin": "^7.1.0"
+  }
+}
