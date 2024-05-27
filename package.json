@@ -2,6 +2,10 @@
   "name": "multi-zopfli",
   "module": "index.ts",
   "type": "module",
+  "license": "Zlib",
+  "author": {
+    "name": "narazaka"
+  },
   "scripts": {
     "build": "bun run build:bun && bun run build:cp",
     "build:bun": "bun build ./index.ts --compile --outfile multi-zopfli --external zopflipng-bin",
