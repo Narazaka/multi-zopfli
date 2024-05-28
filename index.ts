@@ -14,7 +14,7 @@ function displaySize(beforeSize: number, afterSize: number) {
 }
 
 const cmd = command({
-    name: "multi-zopfli",
+    name: "multi-zopflipng",
     args: {
         glob: positional({type: string, displayName: "glob", description: "Glob pattern to match files"}),
         concurrency: option({type: number, long: "concurrency", short: "c", description: "Number of parallel processes to run", defaultValue: () => Math.ceil(os.cpus().length / 2)}),

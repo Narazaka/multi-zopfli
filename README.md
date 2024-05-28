@@ -1,4 +1,4 @@
-# multi-zopfli
+# multi-zopflipng
 
 To install dependencies:
 
