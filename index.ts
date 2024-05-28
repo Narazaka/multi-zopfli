@@ -41,6 +41,7 @@ const cmd = command({
                 "keep metadata chunks with these names that would normally be removed, e.g. tEXt,zTXt,iTXt,gAMA, ..."
                 + "\n   Due to adding extra data, this increases the result size. Keeping bKGD or sBIT chunks may cause additional worse compression due to forcing a certain color type, it is advised to not keep these for web images because web browsers do not use these chunks. By default ZopfliPNG only keeps (and losslessly modifies) the following chunks because they are essential: IHDR, PLTE, tRNS, IDAT and IEND."
         }),
+        debug: flag({long: "debug", short: "d", description: "print debug information"}),
     },
     handler: async (args) => {
         const options: string[] = [];
@@ -62,7 +63,7 @@ const cmd = command({
             queue.add(() =>
                 new Promise<void>((resolve, reject) => {
                     const allOptions = options.concat(['-y', input, input]);
-                    console.warn([">", path.basename(zopflipng)].concat(allOptions).join(" "));
+                    if (args.debug) console.warn([">", path.basename(zopflipng)].concat(allOptions).join(" "));
                     console.warn(`Optimizing [${filesize(beforeSize).human()}] ${input}`);
                     execFile(zopflipng, allOptions, (err) => {
                         if (err) return reject(err);
