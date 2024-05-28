@@ -25,15 +25,13 @@ const cmd = command({
         for await (const entry of globbyStream(slash(args.glob), {onlyFiles: true})) {
             if (path.extname(entry as string) !== ".png") continue;
             const input = entry as string;
-            const output = input.replace(/\.png$/, ".zopfli.png");
             const beforeSize = fs.statSync(input).size;
             sizes[input] = {beforeSize};
             queue.add(() =>
                 new Promise<void>((resolve, reject) => {
                     console.warn(`Optimizing [${filesize(beforeSize).human()}] ${input}`);
-                    execFile(zopflipng, ['-m', '--lossy_transparent', input, output], (err) => {
+                    execFile(zopflipng, ['-y', '-m', '--lossy_transparent', input, input], (err) => {
                         if (err) return reject(err);
-                        fs.renameSync(output, input);
                         const afterSize = fs.statSync(input).size;
                         sizes[input].afterSize = afterSize;
                         console.warn(`Optimized [${displaySize(beforeSize, afterSize)}] ${input}`);
